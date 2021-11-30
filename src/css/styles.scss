@@ -1,7 +1,136 @@
+html {
+  background: #000000;
+}
 body {
-  background: black;
-  h1 {
-    color: red;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000000;
+  color: white;
+}
+
+#navbar {
+  z-index: 999;
+}
+
+#search-bar {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  input[type="text"] {
+    height: 2rem;
+    width: 15rem;
+    margin-right: 1rem;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    font-size: 2rem;
+    background: #292929;
+    color: white;
+    border-style: solid;
+    border: none;
   }
+
+  input {
+    border: 2px solid black !important;
+    vertical-align: middle;
+  }
+
+  input[type="submit"] {
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    font-size: 1.5rem;
+    background: #292929;
+    color: white;
+    border-style: solid;
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
+    border: 2px solid red !important;
+  }
+}
+
+#navbar {
+  position: fixed;
+  padding-left: 3rem;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.583);
+  color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+#feed {
+  display: grid;
+  margin-left: 5%;
+  margin-right: 5%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 5%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+
+  img {
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  div {
+    transition: 0.2s;
+    border-radius: 1rem;
+    max-width: 22vw;
+    height: 30vh;
+  }
+
+  div:hover {
+    background: #292929;
+    -webkit-box-shadow: 0px 0px 44px 20px rgba(38, 38, 38, 0.97);
+    box-shadow: 0px 0px 44px 20px rgba(38, 38, 38, 0.97);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #feed {
+    grid-template-columns: repeat(4, 0.25fr);
+    margin-left: 3rem;
+    margin-right: 3rem;
+    grid-gap: 3rem;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(61, 61, 61);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+#watch {
+  margin-top: 6rem;
+}
+
+.plyr {
+  --plyr-color-main: red;
+  height: 80vh !important;
 }
