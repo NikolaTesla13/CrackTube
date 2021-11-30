@@ -13,7 +13,9 @@ async function build() {
 }
 
 async function createProdFolder() {
-  const { stdout, stderr } = await exec("mkdir prod");
+  const { stdout, stderr } = await exec(
+    isWin ? "mkdir prod && mkdir prod\\functions" : "mkdir prod"
+  );
   if (stderr) {
     console.log("Error while creating the folder: " + stderr);
     return;
@@ -70,6 +72,18 @@ async function copyEvenMoreFiles() {
     isWin
       ? "copy public\\index.html prod"
       : "cp public/index.html prod/index.html"
+  );
+  if (stderr) {
+    console.log("Error copying the files: " + stderr);
+    return;
+  }
+  console.log(stdout);
+  copyEvenMoreMoreFiles();
+}
+
+async function copyEvenMoreMoreFiles() {
+  const { stdout, stderr } = await exec(
+    isWin ? "xcopy /E /I functions prod\\functions" : "cp -R functions/ prod"
   );
   if (stderr) {
     console.log("Error copying the files: " + stderr);
