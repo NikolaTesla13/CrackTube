@@ -23,7 +23,14 @@ async function createProdFolder() {
 }
 
 async function fetchFeed() {
-  const { stdout, stderr } = await exec("node fetch-yt.cjs");
+  const imLazy = true;
+  const { stdout, stderr } = await exec(
+    imLazy
+      ? isWin
+        ? "copy public\\feed.js prod"
+        : "cp public/feed.js prod/feed.js"
+      : "node fetch-yt.cjs"
+  );
   if (stderr) {
     console.log("Error getting the feed: " + stderr);
     return;
