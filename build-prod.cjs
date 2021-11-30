@@ -8,7 +8,8 @@ async function build() {
     return;
   }
   console.log(stdout);
-  createProdFolder();
+  //createProdFolder();
+  copyFiles();
 }
 
 async function createProdFolder() {

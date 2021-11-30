@@ -38,17 +38,12 @@ const main = async () => {
     });
   }
 
-  let handleMousemove = (event) => {
-    // if (event.y > (window.innerHeight / 3) * 2) {
-    //   window.scroll(0, 200);
-    // }
-    // if (event.y < (window.innerHeight / 3) * 2) {
-    //   window.scroll(0, -200);
-    // }
-    // console.log(`mouse position: ${event.x}:${event.y}`);
-  };
-
-  document.addEventListener("mousemove", handleMousemove);
+  document
+    .getElementById("search-btn")
+    .addEventListener("click", async (event) => {
+      const searchQuery = document.getElementById("search").value;
+      console.log(searchQuery);
+    });
 };
 
 main();
