@@ -48,7 +48,7 @@ const discoverData = async () => {
   });
 
   await fs.writeFileSync("public/feed.js", JSON.stringify({ data: data }));
-  await fs.writeFileSync("prod/feed.js", JSON.stringify({ data: data }));
+  //await fs.writeFileSync("prod/feed.js", JSON.stringify({ data: data }));
 
   await browser.close();
 };
