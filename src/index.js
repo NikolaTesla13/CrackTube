@@ -23,11 +23,7 @@ const playVideo = (id) => {
   });
 };
 
-const main = async () => {
-  document.getElementById("watch").style.display = "none";
-
-  const res = await get("/feed.js");
-  const data = await res.data.data;
+const createFeed = (data) => {
   for (let i = 0; i < data.length; i++) {
     document.querySelector(`#video-${i}`).innerHTML = `
     <amp-img [src]="video_${i}" width="720" height="404" layout="responsive" src="${data[i].thumbnail}"></amp-img>
@@ -37,12 +33,25 @@ const main = async () => {
       playVideo(data[i].id);
     });
   }
+};
+
+const main = async () => {
+  document.getElementById("watch").style.display = "none";
+
+  const res = await get("/feed.js");
+  const data = await res.data.data;
+  createFeed(data);
 
   document
     .getElementById("search-btn")
     .addEventListener("click", async (event) => {
       const searchQuery = document.getElementById("search").value;
-      console.log(searchQuery);
+      const res = await get(
+        "https://cracktube.netlify.app/.netlify/functions/hello?query=" +
+          searchQuery
+      );
+      const data = await res.data.data;
+      createFeed(data);
     });
 };
 
