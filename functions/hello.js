@@ -1,6 +1,8 @@
 exports.handler = async function (event, context) {
   const YouTube = require("youtube-sr").default;
-  const results = await YouTube.search("fireship", { limit: 12 });
+  const results = await YouTube.search(event.queryStringParameters.query, {
+    limit: 12,
+  });
   const data = [];
   for (let i = 0; i < 12; i++) {
     data.push({
